@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. $(dirname $0)/getmidiports.sh
+
+amidi -p ${RAWMIDI_PORT} -S 'F0 43 10 4C 00 00 7E 00 F7'

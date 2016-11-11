@@ -1,0 +1,10 @@
+#!/bin/bash
+
+. $(dirname $0)/getmidiports.sh
+
+# For each channel {0..15} (printed as a hex integer) do
+for channel in $(printf '%x\n' $(seq 0 15)); do
+  # send "All Sound Off" command for all channels
+  # http://www.midi.org/techspecs/midimessages.php
+  amidi -p $RAWMIDI_PORT -S "B${channel} 78 00"
+done

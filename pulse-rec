@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z "${1// }" ]; then
+  echo "pulse-rec: record pulseaudio output"
+  echo "Need to provide a file name to save as (e.g. out.wav)";
+  exit 1;
+fi
+
+DEVICE=$(pacmd list | grep "analog-stereo.monitor>" | grep -v usb | sed 's/.*<\(.*\)>.*/\1/g');
+pacat --record -d "$DEVICE" | sox -t raw -r 44100 -e signed-integer -L -b 16 -c 2 - "$1"
