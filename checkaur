@@ -3,5 +3,5 @@ available=$(/usr/bin/cower -u)
 if [ $? != 0 ]; then
     /usr/bin/notify-send -u critical \
                 "AUR Updates Available" \
-                "Run pacaur -u to update all. Updates available:\n$available"
+                "Run 'trizen -Su --aur' to update all. Updates available:\n$available"
 fi
