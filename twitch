@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ $# != 1 ]]; then
+   echo "Usage: $0 <channel name>" >&2
+   exit 1
+fi
+
+# https://streamlink.github.io/cli/plugins/twitch.html
+#streamlink -p mpv "--twitch-api-header=Authorization=OAuth <value here>" --twitch-low-latency "twitch.tv/$1" best &
+java -jar ~/.local/bin/chatty/Chatty.jar -channel "$1" -connect -single
